@@ -1,0 +1,405 @@
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos do cabeçalho */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header form {
+  display: flex;
+}
+
+header input[type="text"] {
+  padding: 5px;
+  border: none;
+  border-radius: 3px 0 0 3px;
+}
+
+header button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0 3px 3px 0;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Estilos da seção de eventos em destaque */
+.eventos_destaque {
+  margin: 20px;
+}
+
+.eventos_destaque h2 {
+  font-size: 24px;
+}
+
+/* Estilos do link de login */
+.login_criacao_conta {
+  display: flex;
+}
+
+.login_criacao_conta a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.login_criacao_conta .login {
+  background-color: #555;
+}
+
+.login_criacao_conta .criacao_conta {
+  background-color: #777;
+}
+
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos do formulário de criação de evento */
+.Criacao_evento {
+  margin: 20px;
+}
+
+.Criacao_evento form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Criacao_evento label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.Criacao_evento input[type="text"],
+.Criacao_evento input[type="date"],
+.Criacao_evento input[type="time"],
+.Criacao_evento input[type="number"],
+.Criacao_evento select {
+  padding: 5px;
+  width: 300px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.Criacao_evento input[type="file"] {
+  margin-top: 10px;
+}
+
+.Criacao_evento input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.Criacao_evento input[type="submit"]:hover {
+  background-color: #333;
+}
+
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+  margin: 20px auto;
+  width: 300px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #333;
+}
+
+span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+nav {
+  background-color: #555;
+  color: #fff;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+section {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Cadastro {
+  width: 300px;
+  margin: 0 auto;
+}
+
+form {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  background-color: #191919;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login p {
+  margin: 0;
+}
+
+.login a {
+  color: #333;
+  text-decoration: none;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}
+
+.evento {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.evento img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.evento h3 {
+  margin: 0;
+}
+
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos do cabeçalho */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0 3px 3px 0;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+}
+
+.voltar_btn {
+  background-color: #777;
+}
+
+/* Estilos da seção de detalhes do evento */
+.detalhes_evento {
+  margin: 20px;
+}
+
+.detalhes_evento img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.detalhes_evento h2 {
+  font-size: 24px;
+}
+
+.detalhes_evento p {
+  margin-bottom: 20px;
+}
+
+.detalhes_evento form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.detalhes_evento form button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.detalhes_evento form button:hover {
+  background-color: #333;
+}
+

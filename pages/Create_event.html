@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criacao_evento</title>
+    <link rel="stylesheet" href="../css/styless.css">
+</head>
+<body>
+    <h1>Criacao de evento</h1>
+    <div class="Criacao_evento">
+        <form enctype="multipart/form-data" method="post" action="../functions/event.php"> 
+
+            <label for="titulo">Título do Evento:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required>
+
+            <label for="data_evento">Data do Evento:</label>
+            <input type="date" id="data_evento" name="data_evento" required>
+
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" name="hora" required>
+
+            <label for="local">Local:</label>
+            <input type="text" id="local" name="local" required>
+
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria">
+                <option value="Esporte">Esporte</option>
+                <option value="Palestra">Palestra</option>
+                <option value="Festa">Festa</option>
+            </select>
+
+            <label for="preco">Preço do Ingresso:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" name="imagem" required>
+
+            <input type="submit" value="Criar Evento">
+        </form>
+    </div>
+</body>
+</html>
