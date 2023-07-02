@@ -34,12 +34,16 @@
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo '<div class="evento">';
-                echo '<a href="../functions/event_details.php?id=' . $row['id'] . '">';
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['imagem']) . '" alt="Imagem do evento">';
-                echo '<h3>' . $row['titulo'] . '</h3>';
-                echo '</a>';
-                echo '</div>';
+                $evento_id = $row['id']; 
+                $titulo = $row['titulo'];
+                $imagem = $row['imagem'];
+
+                echo "<div class='evento'>";
+                echo "<a href='../functions/event_details.php?id=$evento_id'>";
+                echo "<img src='../img/$imagem' alt='Imagem do Evento' class='imagem-evento'>";
+                echo "<h3>$titulo</h3>";
+                echo "</a>";
+                echo "</div>";
             }
         } else {
             echo "Nenhum evento encontrado.";
