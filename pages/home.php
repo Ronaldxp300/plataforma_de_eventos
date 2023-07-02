@@ -41,7 +41,7 @@
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="evento">';
                 echo '<a href="../functions/event_details.php?id=' . $row['id'] . '">';
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['imagem']) . '" alt="Imagem do evento">';
+                echo '<img src="data:image/jpeg;base64,' . $row['imagem'] . '" alt="Imagem do evento">';
                 echo '<h3>' . $row['titulo'] . '</h3>';
                 echo '</a>';
                 echo '</div>';

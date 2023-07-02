@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($conn->query($sql_insert_event) === TRUE) {
                 $success_message = "Evento criado com sucesso!";
-                echo "<script>alert('$success_message'); window.location.href = '../pages/home.html';</script>";
+                echo "<script>alert('$success_message'); window.location.href = '../pages/home_organizador.php';</script>";
                 exit();
             } else {
                 $error_message = "Erro ao realizar o registro: " . $conn->error;

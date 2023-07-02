@@ -1,3 +1,5 @@
+<?php require_once '../data_base/banco_de_dados.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,63 +11,80 @@
 <body>
     <header>
         <h1>RP Events</h1>
+        <form action="../functions/processar_busca.php" method="GET">
+            <input type="text" id="busca" name="busca" placeholder="Buscar eventos...">
+            <button type="submit">Pesquisar</button>
+        </form>
     </header>
 
-    <div class="detalhes_evento">
-        <?php
-        require_once '../data_base/banco_de_dados.php';
+    <?php
+    if (isset($_GET['id'])) {
+        $id_evento = $_GET['id'];
 
-        if (isset($_GET['id'])) {
-            $id_evento = $_GET['id'];
+        $sql = "SELECT * FROM events WHERE id = '$id_evento'";
+        $result = $conn->query($sql);
 
-            $sql = "SELECT * FROM events WHERE id = '$id_evento'";
-            $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $titulo = $row['titulo'];
+            $descricao = $row['descricao'];
+            $data_evento = $row['data_evento'];
+            $hora = $row['hora'];
+            $local = $row['local'];
+            $categoria = $row['categoria'];
+            $preco = $row['preco'];
+            $imagem = $row['imagem'];
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $titulo = $row['titulo'];
-                $descricao = $row['descricao'];
-                $imagem = $row['imagem'];
+            echo "<h2>$titulo</h2>";
+            echo '<img src="../img/' . $imagem . '" alt="Imagem do evento" class="imagem-evento">';
+            echo "<p>$descricao</p>";
+            echo "<p><strong>Data:</strong> $data_evento</p>";
+            echo "<p><strong>Hora:</strong> $hora</p>";
+            echo "<p><strong>Local:</strong> $local</p>";
+            echo "<p><strong>Categoria:</strong> $categoria</p>";
+            echo "<p><strong>Preço:</strong> R$ $preco</p>";
 
-                echo "<h2>$titulo</h2>";
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($imagem) . '" alt="Imagem do evento">';
-                echo "<p>$descricao</p>";
+            session_start();
+            if (isset($_SESSION['user'])) {
+                $id_usuario = $_SESSION['user'];
 
-                session_start();
-                if (isset($_SESSION['user'])) {
-                    $id_usuario = $_SESSION['user'];
+                $sql_usuario = "SELECT tipo_usuario FROM users WHERE id = '$id_usuario'";
+                $result_usuario = $conn->query($sql_usuario);
 
-                    $sql_inscricao = "SELECT * FROM registrations WHERE id_usuario = '$id_usuario' AND id_evento = '$id_evento'";
-                    $result_inscricao = $conn->query($sql_inscricao);
+                if ($result_usuario->num_rows > 0) {
+                    $row_usuario = $result_usuario->fetch_assoc();
+                    $tipo_usuario = $row_usuario['tipo_usuario'];
 
-                    if ($result_inscricao->num_rows > 0) {
-                        echo "<p>Você já está inscrito neste evento.</p>";
+                    if ($tipo_usuario === 'organizador' || $tipo_usuario === 'administrador') {
+                        echo "<p>Usuários do tipo '$tipo_usuario' não podem se inscrever neste evento.</p>";
                     } else {
-                        echo '<form action="../functions/processar_compra.php" method="POST">';
-                        echo '<input type="hidden" name="id_usuario" value="' . $id_usuario . '">';
-                        echo '<input type="hidden" name="id_evento" value="' . $id_evento . '">';
-                        echo '<button type="submit" name="registrar" onclick="exibirPopup()">Comprar Ingresso</button>';
-                        echo '</form>';
+                        $sql_inscricao = "SELECT * FROM registrations WHERE id_usuario = '$id_usuario' AND id_evento = '$id_evento'";
+                        $result_inscricao = $conn->query($sql_inscricao);
+
+                        if ($result_inscricao->num_rows > 0) {
+                            echo "<p>Você já está inscrito neste evento.</p>";
+                        } else {
+                            echo '<form action="../functions/processar_compra.php" method="POST">';
+                            echo '<input type="hidden" name="id_usuario" value="' . $id_usuario . '">';
+                            echo '<input type="hidden" name="id_evento" value="' . $id_evento . '">';
+                            echo '<button type="submit" name="registrar" onclick="exibirPopup()">Comprar Ingresso</button>';
+                            echo '</form>';
+                        }
                     }
                 } else {
-                    echo '<p>Faça login para comprar ingressos para este evento.</p>';
+                    echo "<p>Não foi possível obter informações do usuário.</p>";
                 }
             } else {
-                echo "Evento não encontrado.";
+                echo '<p>Faça login para comprar ingressos para este evento.</p>';
             }
         } else {
-            echo "ID do evento não fornecido.";
+            echo "Evento não encontrado.";
         }
+    } else {
+        echo "ID do evento não fornecido.";
+    }
 
-        $conn->close();
-        ?>
-    </div>
-
-    <script>
-        function exibirPopup() {
-            alert("Inscrição realizada com sucesso!");
-        }
-    </script>
-
+    $conn->close();
+    ?>
 </body>
 </html>

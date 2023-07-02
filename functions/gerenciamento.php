@@ -61,13 +61,52 @@ function getParticipantes()
     return $participantes;
 }
 
+function getNomeEvento($id)
+{
+    global $conn;
+    $id = $conn->real_escape_string($id);
+    $sql = "SELECT titulo FROM events WHERE id = $id";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['titulo'];
+    }
+
+    return "";
+}
+
+function getNomeParticipante($id)
+{
+    global $conn;
+    $id = $conn->real_escape_string($id);
+    $sql = "SELECT nome FROM users WHERE id = $id";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['nome'];
+    }
+
+    return "";
+}
+
+
 function deletarEvento($id)
 {
     global $conn;
     $id = $conn->real_escape_string($id);
+
+    $sql = "DELETE FROM registrations WHERE id_evento = $id";
+    $conn->query($sql);
+
+    $sql = "DELETE FROM users WHERE id IN (SELECT id_usuario FROM registrations WHERE id_evento = $id)";
+    $conn->query($sql);
+
     $sql = "DELETE FROM events WHERE id = $id";
     $conn->query($sql);
 }
+
 
 function deletarInscricao($id)
 {

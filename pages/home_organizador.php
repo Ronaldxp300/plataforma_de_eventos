@@ -42,7 +42,7 @@
         if ($result_eventos->num_rows > 0) {
 
             while ($row = $result_eventos->fetch_assoc()) {
-                $evento_id = $row['id']; // Obtém o ID do evento
+                $evento_id = $row['id']; 
                 $titulo = $row['titulo'];
                 $descricao = $row['descricao'];
                 $imagem = $row['imagem'];

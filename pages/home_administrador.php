@@ -29,9 +29,14 @@
     </script>
 </head>
 <body>
-    <header>
-        <h1>RP Events</h1>   
-        <button onclick="location.href='login.html'" class="logout">Sair</button>     
+<header>
+        <h1>RP Events</h1>
+        <form action="../functions/processar_busca.php" method="GET">
+            <input type="text" id="busca" name="busca" placeholder="Buscar eventos...">
+            <button type="submit">Pesquisar</button>
+        </form>
+        <button onclick="location.href='gerenciar_conta.php'" class="gerenciar_conta_btn">Gerenciar Conta</button>
+        <button onclick="location.href='login.html'" class="logout">Sair</button>
     </header>
     
     <nav>
@@ -85,13 +90,17 @@
                 <?php
                 $inscricoes = getInscricoes();
                 foreach ($inscricoes as $inscricao) {
+                    $nomeEvento = getNomeEvento($inscricao['id_evento']);
+                    $nomeParticipante = getNomeParticipante($inscricao['id_usuario']);
+                
                     echo "<tr>";
-                    echo "<td>" . $inscricao['id_evento'] . "</td>";
-                    echo "<td>" . $inscricao['id_usuario'] . "</td>";
+                    echo "<td>" . $nomeEvento . "</td>";
+                    echo "<td>" . $nomeParticipante . "</td>";
                     echo "<td>" . $inscricao['status_pagamento'] . "</td>";
                     echo "<td><button onclick=\"excluirRegistro('inscricao', " . $inscricao['id'] . ")\">Deletar</button></td>";
                     echo "</tr>";
                 }
+                
                 ?>
             </tbody>
         </table>

@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($conn->query($sql_insert_user) != true) {
                     echo "Erro ao realizar o registro: " . $conn->error;
                 } else {
-                    header("Location: ../pages/login.php");
+                    header("Location: ../pages/login.html");
                     exit();
                 }
             }
