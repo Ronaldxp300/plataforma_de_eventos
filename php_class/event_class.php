@@ -86,19 +86,6 @@ class Event {
     public function setImagens($imagens) {
         $this->imagens = $imagens;
     }
-
-    
-    // Função para exibir informações do evento
-    public function exibirInformacoes() {
-        echo "Título: " . $this->titulo . "<br>";
-        echo "Descrição: " . $this->descricao . "<br>";
-        echo "Data: " . $this->data . "<br>";
-        echo "Hora: " . $this->hora . "<br>";
-        echo "Local: " . $this->local . "<br>";
-        echo "Categoria: " . $this->categoria . "<br>";
-        echo "Preço: " . $this->preco . "<br>";
-        echo "Imagens: " . implode(", ", $this->imagens) . "<br>";
-    }
 }
 
 

@@ -20,8 +20,8 @@ class EventoSearch {
             while ($dados = $sql_query->fetch_assoc()) {
                 echo '<div class="evento">';
                 echo '<a href="event_details.php?id=' . $dados['id'] . '">';
-                echo '<img src="../img/' . $dados['imagem'] . '" alt="Imagem do Evento">';
                 echo '<h3>' . $dados['titulo'] . '</h3>';
+                echo '<img src="../img/' . $dados['imagem'] . '" alt="Imagem do Evento">';
                 echo '</a>';
                 echo '</div>';
             }

@@ -1,16 +1,3 @@
-<?php
-$host = "localhost";
-$db_name = "eventos";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($host, $username, $password, $db_name);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,11 +9,13 @@ if ($conn->connect_error) {
 <body>
     <header>
         <h1>RP Events</h1>
-        <button onclick="location.href='gerenciar_conta.php'" class="gerenciar_conta_btn">Gerenciar Conta</button>
-        <button onclick="location.href='login.html'" class="logout">Sair</button>
+        <button onclick="location.href='../pages/gerenciar_conta.php'" class="gerenciar_conta_btn">Gerenciar Conta</button>
+        <button onclick="location.href='../pages/login.html'" class="logout">Sair</button>
     </header>
 
     <?php
+    require_once '../data_base/banco_de_dados.php';
+
     if (isset($_GET['id'])) {
         $evento_id = $_GET['id'];
         $sql_select_evento = "SELECT * FROM events WHERE id = $evento_id";

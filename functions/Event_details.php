@@ -36,7 +36,8 @@
             $imagem = $row['imagem'];
 
             echo "<h2>$titulo</h2>";
-            echo '<img src="../img/' . $imagem . '" alt="Imagem do evento" class="imagem-evento">';
+            echo '<link rel="stylesheet" href="../css/styless.css">
+                <img src="../img/' . $imagem . '" alt="Imagem do evento" class="imagem-evento">';
             echo "<p>$descricao</p>";
             echo "<p><strong>Data:</strong> $data_evento</p>";
             echo "<p><strong>Hora:</strong> $hora</p>";
@@ -67,7 +68,7 @@
                             echo '<form action="../functions/processar_compra.php" method="POST">';
                             echo '<input type="hidden" name="id_usuario" value="' . $id_usuario . '">';
                             echo '<input type="hidden" name="id_evento" value="' . $id_evento . '">';
-                            echo '<button type="submit" name="registrar" onclick="exibirPopup()">Comprar Ingresso</button>';
+                            echo '<button type="submit" name="registrar">Comprar Ingresso</button>';
                             echo '</form>';
                         }
                     }

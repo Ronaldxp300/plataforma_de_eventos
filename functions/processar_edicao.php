@@ -1,10 +1,5 @@
 <?php
-$host = "localhost";
-$db_name = "eventos";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($host, $username, $password, $db_name);
+require_once '../data_base/banco_de_dados.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

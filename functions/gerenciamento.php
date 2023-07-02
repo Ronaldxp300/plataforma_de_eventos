@@ -1,10 +1,5 @@
 <?php
-$host = "localhost";
-$db_name = "eventos";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($host, $username, $password, $db_name);
+require_once '../data_base/banco_de_dados.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -49,7 +44,7 @@ function getParticipantes()
     global $conn;
     $participantes = array();
 
-    $sql = "SELECT * FROM users WHERE tipo_usuario = 'participante'";
+    $sql = "SELECT * FROM users WHERE tipo_usuario IN ('participante', 'organizador')";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -60,6 +55,7 @@ function getParticipantes()
 
     return $participantes;
 }
+
 
 function getNomeEvento($id)
 {
@@ -103,10 +99,12 @@ function deletarEvento($id)
     $sql = "DELETE FROM users WHERE id IN (SELECT id_usuario FROM registrations WHERE id_evento = $id)";
     $conn->query($sql);
 
+    $sql = "DELETE FROM reviews WHERE id_evento = $id";
+    $conn->query($sql);
+
     $sql = "DELETE FROM events WHERE id = $id";
     $conn->query($sql);
 }
-
 
 function deletarInscricao($id)
 {
@@ -120,9 +118,31 @@ function deletarParticipante($id)
 {
     global $conn;
     $id = $conn->real_escape_string($id);
+
+    $sql = "DELETE FROM registrations WHERE id_usuario = $id";
+    $conn->query($sql);
+
+    $sql = "DELETE FROM reviews WHERE id_usuario = $id";
+    $conn->query($sql);
+
+    $sql = "SELECT id FROM events WHERE id_criador = $id";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $id_evento = $row["id"];
+
+        $sql = "DELETE FROM registrations WHERE id_evento = $id_evento";
+        $conn->query($sql);
+
+        $sql = "DELETE FROM events WHERE id = $id_evento";
+        $conn->query($sql);
+    }
+
     $sql = "DELETE FROM users WHERE id = $id";
     $conn->query($sql);
 }
+
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];

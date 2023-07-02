@@ -407,6 +407,26 @@ body {
   }
   
   .imagem-evento {
-  max-width: 100%;
-  height: auto;
-  }
+    max-width: 300px; /* Tamanho máximo da largura */
+    max-height: 300px; /* Tamanho máximo da altura */
+    width: auto;
+    height: auto;
+}
+
+.registrar-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registrar-button:hover {
+  background-color: #45a049;
+}
