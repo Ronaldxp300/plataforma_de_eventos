@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RP Events - Página Inicial</title>
     <link rel="stylesheet" href="../css/styless.css">
-
 </head>
 <body>
     <header>
@@ -15,6 +14,7 @@
             <button type="submit">Pesquisar</button>
         </form>
         <button onclick="location.href='gerenciar_conta.php'" class="gerenciar_conta_btn">Gerenciar Conta</button>
+        <button onclick="location.href='login.html'" class="logout">Sair</button>
     </header>
 
     <div class="eventos_destaque">
@@ -42,24 +42,24 @@
         if ($result_eventos->num_rows > 0) {
 
             while ($row = $result_eventos->fetch_assoc()) {
+                $evento_id = $row['id']; // Obtém o ID do evento
                 $titulo = $row['titulo'];
                 $descricao = $row['descricao'];
                 $imagem = $row['imagem'];
 
-
                 echo "<div class='evento'>";
+                echo "<a href='../functions/editar_evento.php?id=$evento_id'>";
                 echo "<img src='../img/$imagem' alt='Imagem do Evento'>";
                 echo "<h3>$titulo</h3>";
+                echo "</a>";
                 echo "</div>";
             }
         } else {
-
             echo "<p>Você ainda não criou nenhum evento.</p>";
         }
 
         $conn->close();
         ?>
-
     </div>
 
     <div class="Criar_Evento">

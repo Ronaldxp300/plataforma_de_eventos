@@ -15,7 +15,7 @@
                 fetch(`../functions/gerenciamento.php?action=deletar_${tabela}&id=${id}`, { method: 'GET' })
                     .then(response => {
                         if (response.ok) {
-                            location.reload(); // Atualiza a página após a exclusão
+                            location.reload(); 
                         } else {
                             alert("Ocorreu um erro ao excluir o registro.");
                         }
@@ -30,7 +30,8 @@
 </head>
 <body>
     <header>
-        <h1>RP Events</h1>
+        <h1>RP Events</h1>   
+        <button onclick="location.href='login.html'" class="logout">Sair</button>     
     </header>
     
     <nav>
@@ -40,7 +41,6 @@
             <li><a href="#participantes">Participantes</a></li>
         </ul>
     </nav>
-
     <section id="eventos">
         <h2>Eventos</h2>
         <table>

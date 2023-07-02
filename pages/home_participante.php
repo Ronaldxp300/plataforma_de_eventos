@@ -14,6 +14,7 @@
             <button type="submit">Pesquisar</button>
         </form>
         <button onclick="location.href='gerenciar_conta.php'" class="gerenciar_conta_btn">Gerenciar Conta</button>
+        <button onclick="location.href='login.html'" class="logout">Sair</button>
     </header>
 
     <div class="eventos_destaque">

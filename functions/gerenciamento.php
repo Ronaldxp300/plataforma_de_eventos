@@ -4,15 +4,12 @@ $db_name = "eventos";
 $username = "root";
 $password = "";
 
-// Criar conexão
 $conn = new mysqli($host, $username, $password, $db_name);
 
-// Checar conexão
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Função para obter todos os eventos do banco de dados
 function getEventos()
 {
     global $conn;
@@ -30,7 +27,6 @@ function getEventos()
     return $eventos;
 }
 
-// Função para obter todas as inscrições do banco de dados
 function getInscricoes()
 {
     global $conn;
@@ -48,7 +44,6 @@ function getInscricoes()
     return $inscricoes;
 }
 
-// Função para obter todos os participantes do banco de dados
 function getParticipantes()
 {
     global $conn;
@@ -66,7 +61,6 @@ function getParticipantes()
     return $participantes;
 }
 
-// Função para deletar um evento pelo ID
 function deletarEvento($id)
 {
     global $conn;
@@ -75,7 +69,6 @@ function deletarEvento($id)
     $conn->query($sql);
 }
 
-// Função para deletar uma inscrição pelo ID
 function deletarInscricao($id)
 {
     global $conn;
@@ -84,7 +77,6 @@ function deletarInscricao($id)
     $conn->query($sql);
 }
 
-// Função para deletar um participante pelo ID
 function deletarParticipante($id)
 {
     global $conn;
