@@ -46,7 +46,7 @@
                 echo "</div>";
             }
         } else {
-            echo "Nenhum evento encontrado.";
+            echo "Nenhum evento cadastrado";
         }
 
         $conn->close();
